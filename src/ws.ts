@@ -66,7 +66,6 @@ const handleBlockchainResponse = (message : Message) => {
         console.log('Blockchain possibly behind');
         if (blockchain.lastBlock.hash === receivedBlockchain.lastBlock.previousHash) {
             console.log('We can append the received block to our chain');
-            console.log('-----> ' + typeof(receivedBlockchain.lastBlock.isChainable));
             blockchain.addBlock(receivedBlockchain.lastBlock);
             broadcast(responseLatestMessage());
         } else if (receivedBlockchain.length === 1) {
